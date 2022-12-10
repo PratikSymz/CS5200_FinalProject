@@ -83,7 +83,6 @@ def signup():
         if (full_name is not None and email is not None and password1 is not None and password2 is not None):
             # Query db to find a user with those credentials
             cursor = mysql_db.connect().cursor()
-            print(f''' SELECT * FROM users WHERE email = "{email}" ''')
             cursor.execute(
                 f''' SELECT * FROM users WHERE email = "{email}" ''')
             lines = cursor.fetchall()
@@ -169,7 +168,7 @@ def cart_page():
 
         product_list = []
         global cart
-        for pid, quantity in cart:
+        for pid in cart:
             cursor.execute(
                 f''' SELECT * FROM product WHERE product_id = {pid} ''')
             product_details = cursor.fetchone()
@@ -199,7 +198,6 @@ def orders_page():
         session.modified = True
         return redirect(url_for('auth.login'))
 
-    print(session['logged_in'])
     return render_template("orders.html", session=session['logged_in'], orders_list=orders_list)
 
 
@@ -282,13 +280,11 @@ def edit_profile_page():
 def add_to_cart():
     product = json.loads(request.data)  # to a dict
     product_id = product['product_id']
-    quantity = product['quantity']
+    # quantity = product['quantity']
 
     # Add product to cart
     global cart
-    cart.add(
-        (int(product_id), quantity)
-    )
+    cart.add(int(product_id))
 
     return jsonify({})
 

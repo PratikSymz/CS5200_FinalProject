@@ -1,8 +1,8 @@
 function addToCart(productId) {
-    quant = document.getElementById("quantity").value;
+    // quant = document.getElementById("quantity").value;
     fetch("/add_to_cart", {
         method: "POST",
-        body: JSON.stringify({ product_id: productId, quantity: quant })
+        body: JSON.stringify({ product_id: productId })
     }).then((_res) => {
         // Reload window -> refresh data
         window.location.href = "/";
