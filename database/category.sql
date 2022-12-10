@@ -1,4 +1,0 @@
-DROP TABLE IF EXISTS category;
-CREATE TABLE category (
-	category VARCHAR(64) PRIMARY KEY
-);

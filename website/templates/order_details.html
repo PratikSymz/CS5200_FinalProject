@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+Order Details
+{% endblock %}
+
+{% block content %}
+<h3 align="center">Order Details</h3>
+<h4 align="center">Date: {{ order_details[1] }}</h4>
+<h5 align="center">Total: ${{ order_details[2] }}</h5>
+<div class="card-deck">
+    {% for product in product_details %}
+    <div class="card" style="min-width: 20rem; max-width: 20rem; margin-top: 2rem; margin-bottom: 2rem;">
+        <div class="card-body">
+            <h5 class="card-title" name="product_id">{{ product[3] }}. {{ product[4] }}</h5>
+            <p class="card-text">Quantity: {{ product[5] }}</p>
+            <p class="card-text">Price: ${{ product[6] }}</p>
+            <p class="card-text">Category: {{ product[10] }}</p>
+            <p class="card-text">Supplier: {{ product[11] }}</p>
+            <p class="card-text"><small class="text-muted">{{ product[8] }}</small></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

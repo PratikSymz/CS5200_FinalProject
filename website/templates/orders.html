@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+Orders
+{% endblock %}
+
+{% block content %}
+<div class="card-deck">
+    {% for order in orders_list %}
+    <div class="card" style="min-width: 20rem; max-width: 20rem; margin-top: 2rem; margin-bottom: 2rem;">
+        <div class="card-body">
+            <h4 class="card-title">Order Id: {{ order[0] }}</h4>
+            <h5 class="card-title">{{ order[1] }}</h5>
+            <p class="card-text">Price: ${{ order[2] }}</p>
+        </div>
+
+        <div class="card-footer" style="display: inline-flex;">
+            <div class="card text-center" style="width: 15.5rem;">
+                <button type="button" class="btn btn-primary" onclick="getOrderDetails('{{ order[0] }}')">View</button>
+            </div>
+            <div class="card text-center" style="width: 15.5rem;">
+                <button type="button" class="btn btn-primary" onclick="deleteOrder('{{ order[0] }}')">Delete</button>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

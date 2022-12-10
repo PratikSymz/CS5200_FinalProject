@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+Cart
+{% endblock %}
+
+{% block content %}
+<div class="card-deck">
+    {% for item in cart_items %}
+    <div class="card" style="min-width: 20rem; max-width: 20rem; margin-top: 2rem; margin-bottom: 2rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ item[0] }}. {{ item[1] }}</h5>
+            <p class="card-text">Price: ${{ item[4] }}</p>
+            <p class="card-text">Weight: {{ item[5] }}lbs.</p>
+            <p class="card-text"><small class="text-muted">{{ item[6] }}</small></p>
+        </div>
+
+        <div class="card-footer">
+            <div class="card text-center" style="width: 15.5rem;">
+                <button type="button" class="btn btn-primary" onclick="removeFromCart('{{ item[0] }}')">Remove</button>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+<br/><br/>
+
+{% if cart_items is defined and cart_items|length > 0 %}
+<button type="button" class="btn btn-primary" onclick="checkout()"">Checkout</button>
+{% endif %}
+
+{% endblock %}

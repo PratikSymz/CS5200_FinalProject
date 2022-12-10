@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Edit profile{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 align="center">Edit address</h3>
+    <div class="form-group">
+        <label for="st_addr1">Street address 1</label>
+        <input type="text" class="form-control" id="form_user_st_addr1" name="st_addr1" placeholder="Enter street address 1" />
+    </div>
+    <div class="form-group">
+        <label for="st_addr2">Street address 2</label>
+        <input type="text" class="form-control" id="form_user_st_addr2" name="st_addr2" placeholder="Enter street address 2" />
+    </div>
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="form_user_city" name="city" placeholder="Enter city" />
+    </div>
+    <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" class="form-control" id="form_user_state" name="state" placeholder="Enter state" />
+    </div>
+    <div class="form-group">
+        <label for="zip">Zip</label>
+        <input type="text" class="form-control" id="form_user_zip" name="zip" placeholder="Enter zip" />
+    </div>
+    <!-- <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" class="form-control" id="form_user_phone" name="phone" placeholder="Enter phone number" />
+    </div> -->
+    <br><br>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <br><br>
+    <button type="submit" class="btn btn-primary" style="background-color: red;" onclick="deleteAccount()">Permanently delete account</button>
+</form>
+{% endblock %}
